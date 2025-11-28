@@ -352,6 +352,17 @@ void Genoma::RutaMasCorta(const std::string& descripcion, int i, int j, int x, i
     path.push_back(v);
   }
   std::reverse(path.begin(), path.end());
+    // Imprimir la ruta (vértices del grafo)
+  std::cout << "La ruta es: ";
+  for (std::size_t k = 0; k < path.size(); ++k) {
+    int pi = path[k] / ancho;
+    int pj = path[k] % ancho;
+    std::cout << cod[path[k]] << " [" << pi << "," << pj << "]";
+    if (k + 1 < path.size()) {
+      std::cout << " -> ";
+    }
+  }
+  std::cout << std::endl;
 
   std::cout << "Para la secuencia " << descripcion
             << ", la distancia mínima entre la base " << cod[origen]
@@ -435,8 +446,7 @@ void Genoma::BaseRemota(const std::string& descripcion, int i, int j) const {
       int v = idx_from_ij(vi, vj);
       if (v < 0) return;
       if (vis[v]) return;
-      double w_uv = 1.0 / (1.0 + std::fabs(static_cast<double>(
-                         static_cast<int>(cod[u]) - static_cast<int>(cod[v]))));
+      double w_uv = 1.0 / (1.0 + std::fabs(static_cast<double>(static_cast<int>(cod[u]) - static_cast<int>(cod[v]))));
       double nd = dist[u] + w_uv;
       if (nd < dist[v]) {
         dist[v] = nd;
