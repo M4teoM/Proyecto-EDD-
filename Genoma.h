@@ -25,6 +25,10 @@ public:
   //implementacion 2da entrega 
   void Codificar(const std::string& nombre_archivo_fabin) const;
   void Decodificar(const std::string& nombre_archivo_fabin);
+  //implementacion 3ra entrega
+    // componente 3
+  void RutaMasCorta(const std::string& descripcion, int i, int j, int x, int y) const;
+  void BaseRemota(const std::string& descripcion, int i, int j) const;
 
 private:
   std::list<Secuencia> secuencias_;
